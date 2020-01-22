@@ -4,7 +4,7 @@
 	<title>Log in</title>
 </head>
 <body>
-	<h1 class = 'title'>RewardMe.</h1>
+	<h1 class = 'title'>Online banking.</h1>
 	<style>
 		body {
 			background-color: #eae7dc;
@@ -35,6 +35,20 @@
 			border-radius: 4px;
 			border:none;
 		}
+		#back{
+			font-family: verdana;
+			background-color: #eae7dc;
+			color: #111111;
+			border-radius: 4px;
+			border:none;
+			font-size: 30px;
+		}
+		a {
+			text-decoration: none;
+		}
+		a:visited{
+			color: #8e8d8a;
+		}
 	</style>
 	<div class = 'box'>
 		<h1>Log In</h1>
@@ -43,9 +57,17 @@
 			<p></p>
 			<input type="password" name="password" placeholder="Password" class = 'inputs'>
 			<p></p>
-			<input type="submit" value="Log-in" name="login" class = 'inputs'>
+			<button class = 'inputs' name = 'login'> <a href = 'home.php'>Log-in</a> </button>
+			<button id = 'back'><a href = 'project1.php'> Back to home</a></button>
 		</form>
 	</div>
-	
+
+<?php
+if (isset($_GET['login'])){
+	$username = $_GET['username'];
+	header("Location:http://localhost/project1/home.php?firstname=$username");
+}
+?>
+
 </body>
 </html>
