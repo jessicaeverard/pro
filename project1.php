@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>RewardMe.</title>
+	<title>Online banking.</title>
 </head>
 <body>
 
-	<h1 class = 'title'>RewardMe.</h1>
+	<h1 class = 'title'>Online banking.</h1>
 
 	<style>
 		
