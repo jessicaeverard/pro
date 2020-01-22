@@ -4,7 +4,7 @@
 	<title>Register</title>
 </head>
 <body>
-<h1 class = 'title'>RewardMe.</h1>
+<h1 class = 'title'>On.</h1>
 	
 	<style>
 
@@ -23,7 +23,7 @@
 		h1{
 			font-family: verdana;
 			color: #e85a4f;
-			margin-top: -25px;
+			margin-top:-55px;
 		}
 
 		.inputs{
@@ -56,9 +56,21 @@
 			border:none;
 			font-size: 20px;
 		}
-
+		#back{
+			font-family: verdana;
+			background-color: #eae7dc;
+			color: #111111;
+			border-radius: 4px;
+			border:none;
+			font-size: 20px;
+		}
+		a {
+			text-decoration: none;
+		}
+		a:visited{
+			color: #8e8d8a;
+		}
 	</style>
-	<button><a href = 'project1.php '> Back</a></button>
 		<center><h1> Register </h1></center>
 		<div id="box">
 		<center><form method = 'post'>
@@ -78,9 +90,39 @@
 			<p></p>
 			<input type="number" placeholder="Phone number" name="phonenumber" class = 'inputs'>
 			<p></p>
-			<input type = 'submit' placeholder='Register' name='register' id = 'button'>
+			<input type = 'submit' value = 'Register' id = 'button' name = 'register'>
+			<button id = 'back'><a href = 'project1.php'> Back to home</a></button>
 		</form></center>
 	</div>
+
+	<?php
+
+		if(isset($_POST['register'])){
+
+		$firstname = 		$_POST['firstname'];
+		$surname =   		$_POST['surname'];
+		$email = 			$_POST['email'];
+		$password = 		$_POST['password'];
+		$confirmpassword= 	$_POST['confirmpassword'];
+		$username = 		$_POST['username'];
+		$phonenumber = 		$_POST['phonenumber'];
+		$dob =  			$_POST['dob'];
+
+		if(($firstname == "" or $surname == "" or $email == "" or $password == "" or $confirmpassword == "" or $username == "" or $phonenumber == "" or $dob == "") or ($password !== $confirmpassword)) {
+            echo "<script>";
+   			echo "alert('Please fill in all fields or check your password ')";
+   			echo "</script>";
+        }
+
+        else {
+		
+		echo $firstname . $surname . $email . $username . $password . $confirmpassword . $phonenumber . $dob;
+		$conn = mysqli_connect("localhost", "root", "", "reward");
+		mysqli_query($conn, "INSERT INTO users (firstname, surname, email, password, confirmpassword, username, phonenumber, dob) values('$firstname', '$surname', '$email', '$password', '$confirmpassword', '$username', '$phonenumber', '$dob')");
+		header("Location:http://localhost/project1/home.php?firstname=$username"); //This will redirect the user to a session page and then transfer their username to the home.php page using the GET method.
+	    }
+	}
+	?>
 
 </body>
 </html>
